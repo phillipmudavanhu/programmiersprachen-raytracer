@@ -1,5 +1,5 @@
-#include "Sphere.hpp"
-#include "ray.hpp"
+#include "sphere.hpp"
+#include "Ray.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>

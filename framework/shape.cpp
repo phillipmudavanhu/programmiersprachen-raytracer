@@ -1,18 +1,18 @@
-#include "Shape.hpp"
+#include "shape.hpp"
 
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-//------------------------------5.0 Shape Base Class-------------------------//
+//------------------------------5.2 Shape Base Class-------------------------//
 
 //Default Constructor 
 Shape::Shape():
     name_{"default Shape"},
     color_{0.0f , 0.0f , 0.0f}
     {
-        cout <<"\nDefault Shape Contruscted\n";
+        cout <<"\nDefault Shape Constructed\n";
     };
 
 //User Defined Constructor taking in two parameters
@@ -20,15 +20,17 @@ Shape::Shape(std::string const& name , Color const& color):
     name_{name},
     color_{color}
     {
-        cout << "\nConstructor Shape Contruscted\n";
+        cout << "\nConstructor Shape Constructed\n";
     };
 
 //Destructor
 Shape::~Shape()
     {
-        cout << "\nDestructor class Shape\n";
+        cout << "\nShape has been Destructored\n";
     };
 
+
+//------------------------------5.3 Implemeting Color and Name-------------------------//
 //Getter Methods
 Color Shape::getColor() const
     {
@@ -51,6 +53,6 @@ std::ostream& Shape::print(std::ostream& os) const
 
 // Overloading of the OStream operator to printt the Object 
 std::ostream& operator<<(std::ostream& os, Shape const& s)
-  {
-    return s.print(os);
+	{
+		return s.print(os);
     }

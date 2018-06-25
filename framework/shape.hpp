@@ -10,7 +10,7 @@ class Shape
 
 public:
 
-  //Base Class constructors
+	//Base Class constructors
     Shape();
     Shape(std::string const& name , Color const& color);
     //virtual ~Shape();

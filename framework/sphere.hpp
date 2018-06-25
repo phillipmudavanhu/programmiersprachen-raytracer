@@ -1,8 +1,8 @@
 #ifndef RAYTRACER_SPHERE_HPP
 #define RAYTRACER_SPHERE_HPP
 
-#include "Shape.hpp"
-#include "ray.hpp"
+#include "shape.hpp"
+#include "Ray.hpp"
 
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
@@ -15,25 +15,23 @@
 class Sphere : public Shape
 {
 
-
 public:
-    //Constructors
     Sphere();
-    Sphere(glm::vec3 const& center, float const& radius , std::string const& name, Color const& color);
+    Sphere(glm::vec3 const& center, float const& radius , std::string const& name, Color const& color); 
     ~Sphere();
 
 
-    //Override Methodes in the Base Class Shape
+	//Override Methodes in the Base Class Shape
     float area() const override; 
     float volume() const override;
-    std::ostream& print(std::ostream& os) const override;
+	std::ostream& print(std::ostream& os) const override;
 
 
     //Getter Methods
      glm::vec3 const& getCenter() const;
      float const& getRadius() const;
 
-    
+	
 
     bool intersect (Ray const& ray, float& distance) const;
 
