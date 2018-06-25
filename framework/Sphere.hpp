@@ -3,32 +3,31 @@
 
 
 #include "color.hpp"
-#include <iostream>
-#include <string>
+#include "shape.hpp"
 
- //Base Class to be Inheritated
-class Shape 
-{
+#include <glm/vec3.hpp>
 
-public:
-	// Constructors
-	Shape();
-   	Shape(std::string const& name, Color const& color);
-   	~Shape();
+class Sphere : public Shape {
 
-	// Getter
-  std::string getName() const;
-  Color getColor() const;
+public: 
+  Sphere();
+  Sphere(glm::vec3 const& ctr, float rad);
+  Sphere(std::string const& name, Color const& color, glm::vec3 const& ctr, float const& radius); 
+  
+  //Override 
+  ~Sphere() override; 
+  float area() const override;
+  float volume() const override;
+  std::ostream& print(std::ostream& os) const override;
 
-   //Virtual pure methods
-   virtual void area() const = 0;
-   virtual void volume() const = 0;
-   virtual std::ostream& print(std::ostream& os) const;
+  //Getter Methods
+  glm::vec3 const& getCenter() const;
+  float const& getRadius() const;
 
+  
 private:
-   std::string name_;
-   Color color_; 
+	glm::vec3 ctr_;
+	float radius_;
 };
-
 
 #endif //RAYTRACER_SPHERE_HPP

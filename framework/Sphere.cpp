@@ -3,48 +3,65 @@
 #include <iostream>
 using namespace std;
 
+const double PI = 3.14159265358979323846;
+
 
 // default Constructor
-Shape::Shape():
-  name_ {"Default Shape"},
-  color_{0.0f , 0.0f , 0.0f}
+Sphere::Sphere():
+  Shape{},
+   ctr_{0.0 , 0.0 , 0.0}, 
+   radius_{0.0f}
   {
-      cout << "default Shape\n";
+      cout << "default Sphere\n";
   };
 
 // Constructor takes name 
-Shape::Shape(std::string const& name, Color const& color): 
-  name_{name},
-  color_{color}
+Sphere::Sphere(std::string const& name, Color const& color, glm::vec3 const& ctr, float const& radius): 
+   Shape{ name, color },
+   ctr_{0.0 , 0.0 , 0.0}, 
+   radius_{0.0f}
   {
-      cout << "User Defined Constructor\n";
+      cout << "User Defined Constructor for the Sphere\n";
   };
 
-
 // Destructor 
-Shape::~Shape() 
+Sphere::~Sphere() 
   {
-	 cout << "Shape-Destruction: "<<endl;
+	 cout << "Sphere is Destructed\n";
   };
 
 //Getter  Methods
-std::string Shape::getName() const 
-  {
-     return name_;
-  }
+glm::vec3 const& Sphere::getCenter() const
+    {
+        return ctr_ ;
+    }
+float const& Sphere :: getRadius() const //
+    {
+        return radius_ ;
+    }
 
-Color Shape :: getColor() const
-  {
-      return color_;
-  }
+//Pure Virtual Methodes the 
+float Sphere :: area() const 
+    {
+    	float areaOfSphere = (4 * PI * radius_ * radius_ ); 
+        return areaOfSphere;
+    }
 
+float Sphere :: volume() const
+    {
+        float volumeOfSphere = ( (4/3) * PI * radius_ * radius_ * radius_); 
+        return volumeOfSphere;
+    }
 
 // prints shape object
 std::ostream& Shape::print(std::ostream& os) const
   {
-	os << "A New Shape called  : " << name_ << "\n" 
-	   << "The RBG Color values: " << color_ << "\n";
-		return os;
+	os << "A New Shape called      : " << name_ << "\n" 
+	   << "The RBG Color values    : " << color_ << "\n"
+	   << "The AREA of the shape   : " << area() << "\n" 
+	   << "The VOLUME of the shape : " << volume() << "\n"
+	   << "The CENTER of the shape : " << "(" << cnt_.x <<","<< cnt_.y << ")" << "\n";
+	return os;
   }
 
 
